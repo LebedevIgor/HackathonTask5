@@ -32,14 +32,23 @@ export const Colors = {
   warning: '#FF9500',
   success: '#34C759',
   info: '#007AFF',
+
+
+  // Yandex
+  yandexLightGreen: '#C0F266',
+  yandexGray: '#808080',
+  yandexBlue: '#007AFF',
+  yandexRed: '#FF3B30',
+  yandexYellow: '#FF9500',
+  yandexOrange: '#FF9500',
 };
 
-//Психо
+
 export const FontSize = {
-  SMALL: 12,
-  MEDIUM: 16,
-  LARGE: 20,
-  EXTRA_LARGE: 24,
+  SMALL: 19,
+  MEDIUM: 20,
+  LARGE: 43,
+  EXTRA_LARGE: 68,
 };
 
 export const Gaps = {
