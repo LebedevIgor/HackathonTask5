@@ -70,12 +70,7 @@ export default function StartScreen() {
         <StartIcon name="StartIcon" size={80} />
       </View>
       <View style={styles.textContainer}>
-        <Typography 
-          fontWeight="bold"
-          size={FontSize.LARGE} 
-          color={Colors.black} 
-          style={styles.title}
-        >
+        <Typography  size={FontSize.LARGE} color={Colors.black} style={styles.title} fontWeight={"900"}>
           {item.title}
         </Typography>
         <Typography 
@@ -110,12 +105,7 @@ export default function StartScreen() {
         </View>
         
         <View style={styles.textContainer}>
-          <Typography 
-            fontWeight="bold"
-            size={FontSize.LARGE} 
-            color={Colors.black} 
-            style={styles.title}
-          >
+          <Typography size={FontSize.LARGE} color={Colors.black} style={styles.title}>
             {item.title}
           </Typography>
           <Typography 
@@ -227,6 +217,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     marginBottom: 16,
+    fontWeight: '900',
   },
   subtitle: {
     textAlign: 'center',
