@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View } from 'react-native';
 
 // import Chat from '../../pages/Chat/Chat';
 import Talk from '../../pages/Talk/Talk';
@@ -9,7 +10,10 @@ import Settings from '../../pages/Settings/Settings';
 import { Colors } from '../../shared/tokens';
 import { tabRouterStyles } from './styled';
 
-import ProfileIcon from '@expo/vector-icons/Ionicons';
+import MenuSettings from '../../../assets/icons/MenuSettings';
+import MenuDictionary from '../../../assets/icons/MenuDictionary';
+import MenuTalk from '../../../assets/icons/MenuTalk';
+
 // import ChatIcon from '@expo/vector-icons/Ionicons';
 // import WalletIcon from '@expo/vector-icons/Ionicons';
 
@@ -28,7 +32,6 @@ export function HomeTabs() {
           ...tabRouterStyles['tab-item'],
           justifyContent: 'center',
           alignItems: 'center',
-          paddingTop: 10,
         },
         tabBarShowLabel: false,
       }}
@@ -38,11 +41,16 @@ export function HomeTabs() {
         component={Talk}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <ProfileIcon
-              name="people-circle"
-              size={24}
-              color={Colors.pinkDark}
-            />
+            <View
+              style={{
+                width: 48,
+                height: 48,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <MenuTalk width={48} height={48} />
+            </View>
           ),
         }}
       />
@@ -52,11 +60,16 @@ export function HomeTabs() {
         component={Dictionary}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <ProfileIcon
-              name="people-circle"
-              size={24}
-              color={Colors.pinkDark}
-            />
+            <View
+              style={{
+                width: 48,
+                height: 48,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <MenuDictionary width={48} height={48} />
+            </View>
           ),
         }}
       />
@@ -66,11 +79,16 @@ export function HomeTabs() {
         component={Settings}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <ProfileIcon
-              name="people-circle"
-              size={24}
-              color={Colors.pinkDark}
-            />
+            <View
+              style={{
+                width: 48,
+                height: 48,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <MenuSettings width={48} height={48} />
+            </View>
           ),
         }}
       />

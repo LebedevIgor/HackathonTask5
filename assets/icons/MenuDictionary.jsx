@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+
 const MenuDictionary = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +21,7 @@ const MenuDictionary = (props) => (
     </G>
     <Defs>
       <ClipPath id="a">
-        <path fill="#fff" d="M0 0h48v48H0z" />
+        <Path fill="#fff" d="M0 0h48v48H0z" />
       </ClipPath>
     </Defs>
   </Svg>
