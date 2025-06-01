@@ -1,7 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    width: '100%',
+    gap: 8,
+  },
   topWrapper: {
     paddingRight: 24,
     paddingLeft: 24,
