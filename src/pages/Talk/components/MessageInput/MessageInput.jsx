@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity } from 'react-native';
-import SendBtn from '../../../../../assets/icons/SendBtn';
-import MenuDictionary from '../../../../../assets/icons/MenuDictionary';
 // Импортируй свои SVG-иконки, например:
 // import MenuIcon from './icons/MenuIcon';
 // import SendIcon from './icons/SendIcon';
@@ -11,7 +9,7 @@ export default function MessageInput() {
   return (
     <View style={styles.inputContainer}>
       {/* Левая иконка */}
-      
+      <View>{/* <MenuIcon /> */}</View>
       {/* Инпут */}
       <TextInput
         style={{
@@ -36,7 +34,7 @@ export default function MessageInput() {
           marginLeft: 8,
         }}
       >
-        <SendBtn />
+        {/* <SendIcon /> */}
       </TouchableOpacity>
     </View>
   );
