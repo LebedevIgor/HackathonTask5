@@ -6,7 +6,6 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 8,
     gap: 30,
   },
 });

@@ -9,14 +9,6 @@ export default styles = StyleSheet.create({
   },
   container: {
     borderRadius: 50,
-    shadowColor: Colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   text: {
     textAlign: 'center',

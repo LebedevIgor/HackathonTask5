@@ -13,10 +13,11 @@ export default function Button({
   mb,
   disable,
   children,
+  styleContainer,
   ...props
 }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styleContainer]}>
       <TouchableOpacity disabled={isLoading || disable} {...props}>
         <View style={[styles.button, styleBtn]}>
           {isLoading ? (
