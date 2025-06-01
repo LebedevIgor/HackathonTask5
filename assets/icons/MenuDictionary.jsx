@@ -19,9 +19,9 @@ const MenuDictionary = (props) => (
       />
     </G>
     <Defs>
-      <clipPath id="a">
+      <ClipPath id="a">
         <path fill="#fff" d="M0 0h48v48H0z" />
-      </clipPath>
+      </ClipPath>
     </Defs>
   </Svg>
 );
