@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import styles from './styled';
-import MicroBtn from '../../../../components/MicroBtn/MicroBtn';
+import MicroBtn from '../../../../components/MicroBtn/microBtn';
 import ChatSwitch from '../../../../../assets/icons/ChatSwitch';
 import PlusBtn from '../../../../../assets/icons/PlusBtn';
 import Button from '../../../../components/Button/Button';

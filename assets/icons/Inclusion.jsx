@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
-const Inclusion = (props) => (
+const inclusion = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={49}
@@ -20,4 +20,4 @@ const Inclusion = (props) => (
     />
   </Svg>
 )
-export default Inclusion
+export default inclusion

@@ -1,6 +1,6 @@
 import * as React from "react"
 import Svg, { G, Mask, Ellipse, Path, Defs, ClipPath } from "react-native-svg"
-const SvgComponent = (props) => (
+const YandexIcon = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={49}
@@ -37,4 +37,4 @@ const SvgComponent = (props) => (
     </Defs>
   </Svg>
 )
-export default SvgComponent
+export default YandexIcon

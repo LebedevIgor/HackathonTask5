@@ -10,6 +10,31 @@ export default function MicroBtn({ isLoading, disable, ...props }) {
   const recordingRef = useRef(null);
   const timerRef = useRef(null);
 
+  // Функция для конвертации данных в разные форматы
+  const convertAudioData = async (uri) => {
+    try {
+      // 1. Получаем данные в формате Base64
+      const base64Audio = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      console.log('1. Данные в формате Base64:', base64Audio.substring(0, 100));
+
+      // 2. Получаем данные в виде байтов
+      const audioBytes = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.UTF8,
+      });
+      console.log('2. Данные в виде байтов (первые 100 байт):', audioBytes.substring(0, 100));
+
+      return {
+        base64: base64Audio,
+        bytes: audioBytes
+      };
+    } catch (error) {
+      console.error('Ошибка при конвертации аудио:', error);
+      return null;
+    }
+  };
+
   // Функция для старта записи
   const startRecording = async () => {
     const permission = await Audio.requestPermissionsAsync();
@@ -39,11 +64,15 @@ export default function MicroBtn({ isLoading, disable, ...props }) {
     try {
       await recordingRef.current.stopAndUnloadAsync();
       const uri = recordingRef.current.getURI();
-      const base64Audio = await FileSystem.readAsStringAsync(uri, {
-        encoding: FileSystem.EncodingType.Base64,
-      });
-      // Здесь отправьте base64Audio через WebSocket или fetch
-      // Например: ws.send(base64Audio)
+      
+      // Получаем данные в разных форматах
+      const audioData = await convertAudioData(uri);
+      if (audioData) {
+        console.log('Промежуточная отправка:');
+        console.log('Размер Base64:', audioData.base64.length);
+        console.log('Размер байтов:', audioData.bytes.length);
+      }
+
       // После отправки — начать новую запись
       const { recording } = await Audio.Recording.createAsync(
         Audio.RecordingOptionsPresets.HIGH_QUALITY
@@ -62,12 +91,16 @@ export default function MicroBtn({ isLoading, disable, ...props }) {
       try {
         await recordingRef.current.stopAndUnloadAsync();
         const uri = recordingRef.current.getURI();
-        const base64Audio = await FileSystem.readAsStringAsync(uri, {
-          encoding: FileSystem.EncodingType.Base64,
-        });
-        // Отправьте последний кусок
-        // ws.send(base64Audio)
-        Alert.alert('Аудио записано и отправлено');
+        
+        // Получаем данные в разных форматах
+        const audioData = await convertAudioData(uri);
+        if (audioData) {
+          console.log('Финальная отправка:');
+          console.log('Размер Base64:', audioData.base64.length);
+          console.log('Размер байтов:', audioData.bytes.length);
+        }
+
+        Alert.alert('Аудио записано и готово к отправке');
       } catch (e) {
         console.log('Ошибка при остановке записи:', e);
       }
