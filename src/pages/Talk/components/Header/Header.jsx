@@ -32,7 +32,7 @@ export default function Header() {
           marginBottom: 12,
           marginLeft: 12,
           marginRight: 12,
-          borderRadius: '13px',
+          borderRadius: 13,
           backgroundColor: '#F5F4F2',
         }}
       >
