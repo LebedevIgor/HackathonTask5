@@ -1,5 +1,5 @@
 import * as React from "react"
-const SvgComponent = (props) => (
+const MenuTalk = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={49}
@@ -19,4 +19,4 @@ const SvgComponent = (props) => (
     <circle cx={25.319} cy={19.348} r={3.653} fill="#FCE000" />
   </svg>
 )
-export default SvgComponent
+export default MenuTalk

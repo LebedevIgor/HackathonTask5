@@ -1,6 +1,7 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
-const MicroBtn = (props) => (
+
+const MicroBtnSVG = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -18,4 +19,4 @@ const MicroBtn = (props) => (
     />
   </Svg>
 )
-export default microBtn
+export default MicroBtnSVG

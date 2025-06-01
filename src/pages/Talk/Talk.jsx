@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import styles from './styled';
+import { View, } from 'react-native';
 
-export default function ProfileScreen() {
+import styles from './styled';
+import { useNavigation } from '@react-navigation/native';
+import Header from './components/Header/Header';
+
+
+export default function Talk() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text>Talk</Text>
+
+      <Header/>
+        
     </View>
   );
 }
