@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // import Chat from '../../pages/Chat/Chat';
 import Talk from '../../pages/Talk/Talk';
-import Listen from '../../pages/Dictionary/Dictionary';
+import Dictionary from '../../pages/Dictionary/Dictionary';
 
 import { Colors } from '../../shared/tokens';
 import { tabRouterStyles } from './styled';
