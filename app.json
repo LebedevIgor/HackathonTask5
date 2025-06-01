@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "yandexTask",
+    "slug": "yandexTask",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "api": {
+      "url": "/",
+      "assets": "/assets/requests",
+      "port": 3010
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.jaraxxus.yandexTask"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d3d4f204-4f1d-4926-8d63-2556b151746c"
+      }
+    }
+  }
+}
