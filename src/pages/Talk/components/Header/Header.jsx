@@ -24,6 +24,7 @@ export default function Header() {
           marginTop: 16,
           gap: 12,
           width: '100%',
+
           backgroundColor: 'gray',
         }}
       >
