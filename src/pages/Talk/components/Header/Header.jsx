@@ -42,6 +42,8 @@ export default function Header() {
             marginTop: 3,
             marginLeft: 3,
             flex: 1,
+            borderRadius: 11,
+            
           }}
           styleBtn={{
             backgroundColor: mode === 'talk' ? '#FFFFFF' : 'transparent',
@@ -52,6 +54,7 @@ export default function Header() {
             flexDirection: 'row',
             width: '100%',
             justifyContent: 'center',
+            overflow:'hidden'
           }}
           onPress={() => setMode('talk')}
         >
@@ -68,6 +71,8 @@ export default function Header() {
             marginTop: 3,
             marginRight: 3,
             flex: 1,
+            borderRadius: 11,
+            
           }}
           styleBtn={{
             backgroundColor: mode === 'listen' ? '#FFFFFF' : 'transparent',
@@ -78,6 +83,7 @@ export default function Header() {
             flexDirection: 'row',
             width: '100%',
             justifyContent: 'center',
+            overflow:'hidden'
           }}
           onPress={() => setMode('listen')}
         >
