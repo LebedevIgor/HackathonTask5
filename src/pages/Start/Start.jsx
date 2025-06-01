@@ -1,11 +1,21 @@
 import React, { useState, useRef } from 'react';
-import { View, SafeAreaView, StatusBar, Platform, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  StatusBar,
+  Platform,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
+  Image,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Colors, FontSize } from '../../shared/tokens';
 import Typography from '../../components/Typography/Typography';
 import StartIcon from '../../../assets/icons/StartIcon';
 import YandexIcon from '../../../assets/icons/YandexIcon';
-import InclusionIcon from '../../../assets/icons/inclusion';
+import InclusionIcon from '../../../assets/icons/Inclusion';
 
 // Replace illustration imports with PNG imports
 const illustration1 = require('../../../assets/Illustration1.png');
@@ -24,14 +34,16 @@ const slides = [
   {
     id: '1',
     title: 'Разговаривайте\nс помощью текста',
-    description: 'Приложение покажет на экране, что говорит собеседник. А вы можете написать ответ и озвучить его голосом.',
+    description:
+      'Приложение покажет на экране, что говорит собеседник. А вы можете написать ответ и озвучить его голосом.',
     buttonText: 'Дальше',
     illustration: illustration1,
   },
   {
     id: '2',
     title: 'Читайте речь\nвокруг вас',
-    description: 'Откройте приложение, и оно начнёт превращать в текст речь одного или более спикеров.\n\nУдобно, когда нужно только слушать.',
+    description:
+      'Откройте приложение, и оно начнёт превращать в текст речь одного или более спикеров.\n\nУдобно, когда нужно только слушать.',
     buttonText: 'Дальше',
     illustration: illustration2,
   },
@@ -39,7 +51,7 @@ const slides = [
     id: '3',
     title: 'Быстрые фразы\nпод рукой',
     description: 'Показывайте или озвучивайте заранее сохранённые фразы.',
-    buttonText: 'Начать', 
+    buttonText: 'Начать',
     illustration: illustration3,
   },
 ];
@@ -61,8 +73,8 @@ export default function StartScreen() {
   };
 
   const renderStartScreen = ({ item }) => (
-    <TouchableOpacity 
-      style={[styles.slide, styles.startSlide]} 
+    <TouchableOpacity
+      style={[styles.slide, styles.startSlide]}
       onPress={goToNextSlide}
       activeOpacity={0.9}
     >
@@ -73,8 +85,8 @@ export default function StartScreen() {
         <Typography  size={FontSize.LARGE} color={Colors.black} style={styles.title} fontWeight={"900"}>
           {item.title}
         </Typography>
-        <Typography 
-          size={FontSize.SMALL} 
+        <Typography
+          size={FontSize.SMALL}
           color={Colors.black}
           style={styles.subtitle}
         >
@@ -86,7 +98,11 @@ export default function StartScreen() {
           <YandexIcon />
           <InclusionIcon />
         </View>
-        <Typography size={FontSize.XSMALL} color={Colors.black} style={styles.inclusionText}>
+        <Typography
+          size={FontSize.XSMALL}
+          color={Colors.black}
+          style={styles.inclusionText}
+        >
           Инклюзия в Яндексе
         </Typography>
       </View>
@@ -97,19 +113,19 @@ export default function StartScreen() {
     return (
       <View style={[styles.slide, { backgroundColor: Colors.white }]}>
         <View style={styles.illustrationContainer}>
-          <Image 
+          <Image
             source={item.illustration}
             style={styles.illustration}
             resizeMode="contain"
           />
         </View>
-        
+
         <View style={styles.textContainer}>
           <Typography size={FontSize.LARGE} color={Colors.black} style={styles.title}>
             {item.title}
           </Typography>
-          <Typography 
-            size={FontSize.SMALL} 
+          <Typography
+            size={FontSize.SMALL}
             color={Colors.black}
             style={styles.subtitle}
           >
@@ -117,16 +133,13 @@ export default function StartScreen() {
           </Typography>
         </View>
 
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={goToNextSlide}
-        >
+        <TouchableOpacity style={styles.button} onPress={goToNextSlide}>
           <Typography size={FontSize.MEDIUM} color={Colors.white} tac>
             {item.buttonText}
           </Typography>
         </TouchableOpacity>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.skipButton}
           onPress={() => navigation.navigate('Home')}
         >
@@ -139,16 +152,20 @@ export default function StartScreen() {
   };
 
   const renderItem = (props) => {
-    return props.item.isStartScreen ? renderStartScreen(props) : renderOnboardingScreen(props);
+    return props.item.isStartScreen
+      ? renderStartScreen(props)
+      : renderOnboardingScreen(props);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
         barStyle="dark-content"
-        backgroundColor={currentIndex === 0 ? Colors.yandexYellow : Colors.white}
+        backgroundColor={
+          currentIndex === 0 ? Colors.yandexYellow : Colors.white
+        }
       />
-      
+
       <FlatList
         ref={flatListRef}
         data={slides}
@@ -157,7 +174,9 @@ export default function StartScreen() {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={(event) => {
-          const newIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+          const newIndex = Math.round(
+            event.nativeEvent.contentOffset.x / width
+          );
           setCurrentIndex(newIndex);
         }}
         keyExtractor={(item) => item.id}
@@ -171,7 +190,10 @@ export default function StartScreen() {
               key={index}
               style={[
                 styles.dot,
-                { backgroundColor: currentIndex - 1 === index ? Colors.black : Colors.gray300 }
+                {
+                  backgroundColor:
+                    currentIndex - 1 === index ? Colors.black : Colors.gray300,
+                },
               ]}
             />
           ))}

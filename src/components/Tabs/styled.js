@@ -5,16 +5,20 @@ export const tabRouterStyles = StyleSheet.create({
   'tab-bar': {
     backgroundColor: Colors.white,
     borderTopWidth: 0,
-    height: 60,
-    shadowColor: Colors.black,
+    borderWidth: 0,
+    elevation: 0,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: -2,
+      height: 0,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 5,
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    borderRadius: 0,
+    height: 60,
     justifyContent: 'center',
+    marginTop: -1,
+    paddingTop: 1,
   },
 
   'tab-label': {
