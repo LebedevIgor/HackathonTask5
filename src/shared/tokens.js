@@ -36,10 +36,13 @@ export const Colors = {
 
   // Yandex
   yandexLightGreen: '#C0F266',
+
+
+  
   yandexGray: '#808080',
   yandexBlue: '#007AFF',
   yandexRed: '#FF3B30',
-  yandexYellow: '#FF9500',
+  yandexYellow: '#FCE000',
   yandexOrange: '#FF9500',
 };
 

@@ -9,6 +9,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: 30,
+    backgroundColor: Colors.yandexYellow,
   },
 
   slide: {
