@@ -11,11 +11,6 @@ export default function Header() {
   const [mode, setMode] = useState('talk'); // 'talk' или 'listen'
 
   const shadowStyle = {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
   };
 
   return (

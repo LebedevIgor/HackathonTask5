@@ -8,10 +8,12 @@ export default styles = StyleSheet.create({
     padding: 12,
     minWidth: '100%',
     alignSelf: 'flex-start',
+    gap: 4
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   iconPlaceholder: {
     width: 20,

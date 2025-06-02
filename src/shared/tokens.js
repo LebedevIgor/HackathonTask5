@@ -51,6 +51,7 @@ export const FontSize = {
   SMALL: 19,
   MEDIUM: 20,
   LARGE: 43,
+  BIG_LARGE: 48,
   EXTRA_LARGE: 68,
 };
 

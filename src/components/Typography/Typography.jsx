@@ -15,7 +15,6 @@ const Typography = ({ size, color, children, tac, fontWeight, ...props }) => {
     lineHeight: size,
   };
 
-  // Determine font family based on desired weight
   const isBlackWeight = fontWeight === '900' || fontWeight === 900;
   const fontFamily = isBlackWeight ? 'InterTight-Black' : 'YS-Text-Regular';
 

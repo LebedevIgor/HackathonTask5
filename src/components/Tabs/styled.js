@@ -17,23 +17,27 @@ export const tabRouterStyles = StyleSheet.create({
     borderRadius: 0,
     height: 80,
     justifyContent: 'center',
+    alignItems: 'center',
     marginTop: -1,
     paddingTop: 1,
     overflow: 'visible',
     paddingHorizontal: 0,
+    paddingTop: 20,
   },
 
   'tab-label': {
     color: Colors.green,
     fontSize: 12,
     fontWeight: '500',
+    textAlign: 'center',
   },
 
   'tab-item': {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 'auto',
-    height: 'auto',
+    width: '100%',
+    height: '100%',
     overflow: 'visible',
+    flex: 1,
   },
 });

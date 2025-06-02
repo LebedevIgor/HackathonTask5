@@ -34,6 +34,7 @@ export function HomeTabs() {
           ...tabRouterStyles['tab-item'],
           justifyContent: 'center',
           alignItems: 'center',
+          flex: 1,
         },
         tabBarShowLabel: false,
         tabBarButton: (props) => (
@@ -54,6 +55,7 @@ export function HomeTabs() {
                 height: 48,
                 justifyContent: 'center',
                 alignItems: 'center',
+                flex: 1,
               }}
             >
               {focused ? (
@@ -77,6 +79,7 @@ export function HomeTabs() {
                 height: 48,
                 justifyContent: 'center',
                 alignItems: 'center',
+                flex: 1,
               }}
             >
               {focused ? (
@@ -100,6 +103,7 @@ export function HomeTabs() {
                 height: 48,
                 justifyContent: 'center',
                 alignItems: 'center',
+                flex: 1,
               }}
             >
               <MenuSettings width={48} height={48} />

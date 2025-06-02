@@ -2,11 +2,12 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MicrophoneIcon from '../../../assets/icons/MicrophoneIcon';
-
+import Typography from '../../components/Typography/Typography';
+import { FontSize } from '../../shared/tokens';
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#E6ECF0',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -15,7 +16,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
   },
   message: {
     fontSize: 24,
@@ -80,11 +81,9 @@ export default function SpeakingInstructions() {
       </TouchableOpacity>
 
       <View style={styles.messageContainer}>
-        <Text style={styles.message}>
-          Включен микрофон.{'\n'}
-          Говорите.{'\n'}
-          Постарайтесь говорить разборчиво и не очень быстро
-        </Text>
+        <Typography fontWeight='900' size={36} tac> Включен микрофон.{'\n'}Говорите.{'\n'}
+          Постарайтесь говорить разборчиво и не очень быстро</Typography>
+        
       </View>
 
       <TouchableOpacity style={styles.playButton}>
