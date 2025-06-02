@@ -5,19 +5,19 @@ import { useFonts } from 'expo-font';
 const Typography = ({ size, color, children, tac, fontWeight, ...props }) => {
   const [fontsLoaded] = useFonts({
     'YS-Text-Regular': require('../../../assets/fonts/YS Text-Regular.ttf'),
-    'YS-Text-Bold': require('../../../assets/fonts/YS Text-Bold.ttf'),
+    'InterTight-Black': require('../../../assets/fonts/InterTight-Black.ttf'),
   });
+
   const textStyle = {
     fontSize: size,
     color: color,
     textAlign: tac ? 'center' : 'start',
-    fontWeight: fontWeight ? fontWeight : '400',
     lineHeight: size,
   };
-  const fontFamily =
-    textStyle?.fontWeight === '900' || textStyle?.fontWeight === 900
-      ? 'YS-Text-Bold'
-      : 'YS-Text-Regular';
+
+  // Determine font family based on desired weight
+  const isBlackWeight = fontWeight === '900' || fontWeight === 900;
+  const fontFamily = isBlackWeight ? 'InterTight-Black' : 'YS-Text-Regular';
 
   if (!fontsLoaded) {
     return (
@@ -32,7 +32,6 @@ const Typography = ({ size, color, children, tac, fontWeight, ...props }) => {
       {children}
     </Text>
   );
-
 };
 
 export default Typography;

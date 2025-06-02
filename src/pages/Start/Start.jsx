@@ -85,6 +85,7 @@ export default function StartScreen() {
         <Typography  size={FontSize.LARGE} color={Colors.black} style={styles.title} fontWeight={"900"}>
           {item.title}
         </Typography>
+        <View style={{ height: 16 }} />
         <Typography
           size={FontSize.SMALL}
           color={Colors.black}
@@ -101,7 +102,8 @@ export default function StartScreen() {
         <Typography
           size={FontSize.XSMALL}
           color={Colors.black}
-          style={styles.inclusionText}
+          style={[styles.inclusionText, { marginTop: 12 }]}
+          fontWeight="700"
         >
           Инклюзия в Яндексе
         </Typography>
@@ -112,41 +114,47 @@ export default function StartScreen() {
   const renderOnboardingScreen = ({ item }) => {
     return (
       <View style={[styles.slide, { backgroundColor: Colors.white }]}>
-        <View style={styles.illustrationContainer}>
-          <Image
-            source={item.illustration}
-            style={styles.illustration}
-            resizeMode="contain"
-          />
+        <View style={styles.contentContainer}>
+          <View style={styles.illustrationContainer}>
+            <Image
+              source={item.illustration}
+              style={styles.illustration}
+              resizeMode="contain"
+            />
+          </View>
+
+          <View style={styles.textContainer}>
+            <Typography size={32} color={Colors.black} style={styles.title} fontWeight="900" tac>
+              {item.title}
+            </Typography>
+            <View style={{ height: 16 }} />
+            <Typography
+              size={19}
+              color={Colors.black}
+              style={styles.subtitle}
+              tac
+            >
+              {item.description}
+            </Typography>
+          </View>
         </View>
 
-        <View style={styles.textContainer}>
-          <Typography size={FontSize.LARGE} color={Colors.black} style={styles.title}>
-            {item.title}
-          </Typography>
-          <Typography
-            size={FontSize.SMALL}
-            color={Colors.black}
-            style={styles.subtitle}
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity style={styles.button} onPress={goToNextSlide}>
+            <Typography size={20} color={Colors.black} tac fontWeight="200">
+              {item.buttonText}
+            </Typography>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.skipButton}
+            onPress={() => navigation.navigate('Home')}
           >
-            {item.description}
-          </Typography>
+            <Typography size={FontSize.SMALL} color={Colors.black} tac>
+              Пропустить
+            </Typography>
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style={styles.button} onPress={goToNextSlide}>
-          <Typography size={FontSize.MEDIUM} color={Colors.white} tac>
-            {item.buttonText}
-          </Typography>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.skipButton}
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Typography size={FontSize.SMALL} color={Colors.black}>
-            Пропустить
-          </Typography>
-        </TouchableOpacity>
       </View>
     );
   };
@@ -182,23 +190,6 @@ export default function StartScreen() {
         keyExtractor={(item) => item.id}
         scrollEnabled={!slides[currentIndex].isStartScreen}
       />
-
-      {!slides[currentIndex].isStartScreen && (
-        <View style={styles.pagination}>
-          {slides.slice(1).map((_, index) => (
-            <View
-              key={index}
-              style={[
-                styles.dot,
-                {
-                  backgroundColor:
-                    currentIndex - 1 === index ? Colors.black : Colors.gray300,
-                },
-              ]}
-            />
-          ))}
-        </View>
-      )}
     </SafeAreaView>
   );
 }
@@ -212,8 +203,6 @@ const styles = StyleSheet.create({
     width,
     flex: 1,
     paddingHorizontal: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: Colors.white,
   },
   startSlide: {
@@ -235,6 +224,7 @@ const styles = StyleSheet.create({
   textContainer: {
     alignItems: 'center',
     marginBottom: 40,
+    paddingHorizontal: 24,
   },
   title: {
     textAlign: 'center',
@@ -247,7 +237,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   button: {
-    backgroundColor: '#48C600',
+    backgroundColor: Colors.yandexYellow,
     borderRadius: 50,
     paddingVertical: 16,
     paddingHorizontal: 32,
@@ -256,23 +246,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   skipButton: {
-    position: 'absolute',
-    bottom: 20,
-    alignSelf: 'center',
-  },
-  pagination: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 60,
-    width: '100%',
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 4,
+    marginTop: 16,
   },
   yandexContainer: {
     alignItems: 'center',
@@ -281,12 +255,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    marginBottom: 8,
   },
   inclusionText: {
-    marginTop: 4,
+    marginTop: 8,
   },
   illustration: {
     width: width - 40, // Full width minus padding
     height: 280,
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  buttonsContainer: {
+    paddingBottom: 40,
   },
 });

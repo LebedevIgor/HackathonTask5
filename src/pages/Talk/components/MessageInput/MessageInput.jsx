@@ -4,12 +4,25 @@ import { View, TextInput, TouchableOpacity } from 'react-native';
 // import MenuIcon from './icons/MenuIcon';
 // import SendIcon from './icons/SendIcon';
 import styles from './styled';
+import SendBtn from '../../../../../assets/icons/SendBtn';
+import Burger from '../../../../../assets/icons/Burger';
 
 export default function MessageInput() {
   return (
     <View style={styles.inputContainer}>
       {/* Левая иконка */}
       <View>{/* <MenuIcon /> */}</View>
+      <TouchableOpacity
+        style={{
+          width: 48,
+          height: 48,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginRight: 8,
+        }}
+      >
+        <Burger />
+      </TouchableOpacity>
       {/* Инпут */}
       <TextInput
         style={{
@@ -35,6 +48,7 @@ export default function MessageInput() {
         }}
       >
         {/* <SendIcon /> */}
+        <SendBtn />
       </TouchableOpacity>
     </View>
   );

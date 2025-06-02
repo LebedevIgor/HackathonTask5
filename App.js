@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Start from './src/pages/Start/Start';
 import { HomeTabs } from './src/components/Tabs/TabRouter';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import SpeakingInstructions from './src/pages/SpeakingInstructions/SpeakingInstructions';
 
 const Stack = createStackNavigator();
 
@@ -13,16 +14,24 @@ export default function App() {
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Start"
             screenOptions={{
               headerShown: false,
               gestureEnabled: true,
               gestureDirection: 'horizontal',
-              animation: 'none',
+              animation: 'slide_from_right',
             }}
           >
             <Stack.Screen name="Start" component={Start} />
             <Stack.Screen name="Home" component={HomeTabs} />
+            <Stack.Screen 
+              name="SpeakingInstructions" 
+              component={SpeakingInstructions}
+              options={{
+                presentation: 'modal',
+                animation: 'slide_from_bottom',
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
