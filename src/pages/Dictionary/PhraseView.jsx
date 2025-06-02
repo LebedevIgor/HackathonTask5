@@ -1,9 +1,28 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { speakText } from '../../utils/speechUtils';
 
 export default function PhraseView({ navigation, route }) {
   const { phrase } = route.params;
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const handleSpeak = async () => {
+    try {
+      setIsSpeaking(true);
+      await speakText(phrase);
+    } catch (error) {
+      console.error('Speech synthesis error:', error);
+    } finally {
+      setIsSpeaking(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -20,8 +39,16 @@ export default function PhraseView({ navigation, route }) {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.playButton}>
-        <Text style={styles.playButtonText}>Воспроизвести</Text>
+      <TouchableOpacity
+        style={[styles.playButton, isSpeaking && styles.playButtonDisabled]}
+        onPress={handleSpeak}
+        disabled={isSpeaking}
+      >
+        {isSpeaking ? (
+          <ActivityIndicator color="#000" />
+        ) : (
+          <Text style={styles.playButtonText}>Воспроизвести</Text>
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -63,9 +90,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
   },
+  playButtonDisabled: {
+    opacity: 0.7,
+  },
   playButtonText: {
     color: '#000',
     fontSize: 16,
     fontWeight: '600',
   },
-}); 
+});

@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MicrophoneIcon from '../../../assets/icons/MicrophoneIcon';
+import { speakText } from '../../utils/speechUtils';
 
 const styles = {
   container: {
@@ -69,10 +70,24 @@ const styles = {
 
 export default function SpeakingInstructions() {
   const navigation = useNavigation();
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const instructionText =
+    'Включен микрофон. Говорите. Постарайтесь говорить разборчиво и не очень быстро';
+
+  const handleSpeak = async () => {
+    try {
+      setIsSpeaking(true);
+      await speakText(instructionText);
+    } catch (error) {
+      console.error('Speech synthesis error:', error);
+    } finally {
+      setIsSpeaking(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.closeButton}
         onPress={() => navigation.goBack()}
       >
@@ -80,17 +95,21 @@ export default function SpeakingInstructions() {
       </TouchableOpacity>
 
       <View style={styles.messageContainer}>
-        <Text style={styles.message}>
-          Включен микрофон.{'\n'}
-          Говорите.{'\n'}
-          Постарайтесь говорить разборчиво и не очень быстро
-        </Text>
+        <Text style={styles.message}>{instructionText}</Text>
       </View>
 
-      <TouchableOpacity style={styles.playButton}>
+      <TouchableOpacity
+        style={[styles.playButton, isSpeaking && { opacity: 0.7 }]}
+        onPress={handleSpeak}
+        disabled={isSpeaking}
+      >
         <MicrophoneIcon />
-        <Text style={styles.playButtonText}>Воспроизвести</Text>
+        {isSpeaking ? (
+          <ActivityIndicator color="#000" style={{ marginLeft: 8 }} />
+        ) : (
+          <Text style={styles.playButtonText}>Воспроизвести</Text>
+        )}
       </TouchableOpacity>
     </View>
   );
-} 
+}
