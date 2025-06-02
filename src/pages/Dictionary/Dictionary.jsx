@@ -1,11 +1,36 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import styles from './styled';
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import PhrasesList from './PhrasesList';
+import PhraseView from './PhraseView';
+import AddPhraseModal from './AddPhraseModal';
+import EditPhraseModal from './EditPhraseModal';
 
-export default function ProfileScreen() {
+const Stack = createNativeStackNavigator();
+
+export default function Dictionary() {
   return (
-    <View style={styles.container}>
-      <Text>Dictionary</Text>
-    </View>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        presentation: 'modal',
+      }}
+    >
+      <Stack.Screen name="PhrasesList" component={PhrasesList} />
+      <Stack.Screen name="PhraseView" component={PhraseView} />
+      <Stack.Screen 
+        name="AddPhrase" 
+        component={AddPhraseModal}
+        options={{
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen 
+        name="EditPhrase" 
+        component={EditPhraseModal}
+        options={{
+          presentation: 'modal',
+        }}
+      />
+    </Stack.Navigator>
   );
 }
