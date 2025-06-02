@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Chat from '../../pages/Chat/Chat';
 import Talk from '../../pages/Talk/Talk';
 import Dictionary from '../../pages/Dictionary/Dictionary';
+import Settings from '../../pages/Settings/Settings';
 
 import { Colors } from '../../shared/tokens';
 import { tabRouterStyles } from './styled';
@@ -32,7 +33,6 @@ export function HomeTabs() {
         tabBarShowLabel: false,
       }}
     >
-    
       <Tab.Screen
         name="Talk"
         component={Talk}
@@ -48,18 +48,32 @@ export function HomeTabs() {
       />
 
       <Tab.Screen
-          name="Dictionary"
-          component={Dictionary}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <ProfileIcon
-                name="people-circle"
-                size={24}
-                color={Colors.pinkDark}
-              />
-            ),
-          }}
-        />
+        name="Dictionary"
+        component={Dictionary}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <ProfileIcon
+              name="people-circle"
+              size={24}
+              color={Colors.pinkDark}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <ProfileIcon
+              name="people-circle"
+              size={24}
+              color={Colors.pinkDark}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }

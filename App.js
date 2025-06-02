@@ -13,7 +13,7 @@ export default function App() {
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Start"
+            initialRouteName="Home"
             screenOptions={{
               headerShown: false,
               gestureEnabled: true,
