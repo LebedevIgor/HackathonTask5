@@ -23,11 +23,14 @@ export default function MicroBtn({ isLoading, disable, ...props }) {
       const audioBytes = await FileSystem.readAsStringAsync(uri, {
         encoding: FileSystem.EncodingType.UTF8,
       });
-      console.log('2. Данные в виде байтов (первые 100 байт):', audioBytes.substring(0, 100));
+      console.log(
+        '2. Данные в виде байтов (первые 100 байт):',
+        audioBytes.substring(0, 100)
+      );
 
       return {
         base64: base64Audio,
-        bytes: audioBytes
+        bytes: audioBytes,
       };
     } catch (error) {
       console.error('Ошибка при конвертации аудио:', error);
@@ -64,7 +67,7 @@ export default function MicroBtn({ isLoading, disable, ...props }) {
     try {
       await recordingRef.current.stopAndUnloadAsync();
       const uri = recordingRef.current.getURI();
-      
+
       // Получаем данные в разных форматах
       const audioData = await convertAudioData(uri);
       if (audioData) {
@@ -91,7 +94,7 @@ export default function MicroBtn({ isLoading, disable, ...props }) {
       try {
         await recordingRef.current.stopAndUnloadAsync();
         const uri = recordingRef.current.getURI();
-        
+
         // Получаем данные в разных форматах
         const audioData = await convertAudioData(uri);
         if (audioData) {

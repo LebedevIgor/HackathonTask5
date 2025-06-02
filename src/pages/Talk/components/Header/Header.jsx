@@ -19,11 +19,38 @@ export default function Header() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.topWrapper}>
-        <ChatSwitch />
-        <MicroBtn />
-        <PlusBtn />
+    <View
+      style={styles.container}
+      accessible={true}
+      accessibilityRole="header"
+      accessibilityLabel="Панель управления разговором"
+    >
+      <View
+        style={styles.topWrapper}
+        accessible={true}
+        accessibilityRole="toolbar"
+        accessibilityLabel="Панель инструментов"
+      >
+        <ChatSwitch
+          accessible={true}
+          accessibilityRole="button"
+          accessibilityLabel="Переключить режим чата"
+        />
+        <MicroBtn
+          accessible={true}
+          accessibilityRole="button"
+          accessibilityLabel={
+            mode === 'talk'
+              ? 'Включить микрофон для разговора'
+              : 'Включить микрофон для прослушивания'
+          }
+          accessibilityHint="Нажмите для начала записи голоса"
+        />
+        <PlusBtn
+          accessible={true}
+          accessibilityRole="button"
+          accessibilityLabel="Добавить новую функцию"
+        />
       </View>
       <View
         style={{
@@ -35,6 +62,9 @@ export default function Header() {
           borderRadius: 13,
           backgroundColor: '#F5F4F2',
         }}
+        accessible={true}
+        accessibilityRole="radiogroup"
+        accessibilityLabel="Выбор режима взаимодействия"
       >
         <Button
           styleContainer={{
@@ -43,7 +73,6 @@ export default function Header() {
             marginLeft: 3,
             flex: 1,
             borderRadius: 11,
-            
           }}
           styleBtn={{
             backgroundColor: mode === 'talk' ? '#FFFFFF' : 'transparent',
@@ -54,13 +83,20 @@ export default function Header() {
             flexDirection: 'row',
             width: '100%',
             justifyContent: 'center',
-            overflow:'hidden'
+            overflow: 'hidden',
           }}
           onPress={() => setMode('talk')}
+          accessible={true}
+          accessibilityRole="radio"
+          accessibilityState={{ checked: mode === 'talk' }}
+          accessibilityLabel="Режим разговора"
+          accessibilityHint="Нажмите для переключения в режим разговора"
         >
           <Typography
             color={mode === 'talk' ? '#262222' : 'rgba(33, 32, 31, 0.70)'}
             size={20}
+            accessible={true}
+            accessibilityElementsHidden={true}
           >
             Разговаривать
           </Typography>
@@ -72,7 +108,6 @@ export default function Header() {
             marginRight: 3,
             flex: 1,
             borderRadius: 11,
-            
           }}
           styleBtn={{
             backgroundColor: mode === 'listen' ? '#FFFFFF' : 'transparent',
@@ -83,13 +118,20 @@ export default function Header() {
             flexDirection: 'row',
             width: '100%',
             justifyContent: 'center',
-            overflow:'hidden'
+            overflow: 'hidden',
           }}
           onPress={() => setMode('listen')}
+          accessible={true}
+          accessibilityRole="radio"
+          accessibilityState={{ checked: mode === 'listen' }}
+          accessibilityLabel="Режим прослушивания"
+          accessibilityHint="Нажмите для переключения в режим прослушивания"
         >
           <Typography
             color={mode === 'listen' ? '#262222' : 'rgba(33, 32, 31, 0.70)'}
             size={20}
+            accessible={true}
+            accessibilityElementsHidden={true}
           >
             Слушать
           </Typography>
