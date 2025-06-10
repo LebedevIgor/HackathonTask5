@@ -1,14 +1,28 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function PhraseView({ navigation, route }) {
   const { phrase } = route.params;
 
+  const toggleOrientation = async () => {
+    const currentOrientation = await ScreenOrientation.getOrientationAsync();
+    
+    if (currentOrientation === ScreenOrientation.Orientation.PORTRAIT_UP) {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+    } else {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity 
+          style={styles.closeButton} 
+          onPress={() => navigation.goBack()}
+        >
           <Feather name="x" size={24} color="black" />
         </TouchableOpacity>
       </View>
@@ -37,6 +51,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     padding: 16,
     paddingTop: 60,
+  },
+  closeButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f5f5f5',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   content: {
     flex: 1,

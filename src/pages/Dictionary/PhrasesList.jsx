@@ -58,6 +58,26 @@ export default function PhrasesList({ navigation, route }) {
   const [selectedPhrase, setSelectedPhrase] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
+  const [pinnedPhrases, setPinnedPhrases] = useState(new Set());
+
+  const togglePin = (phrase) => {
+    const newPinnedPhrases = new Set(pinnedPhrases);
+    if (newPinnedPhrases.has(phrase)) {
+      newPinnedPhrases.delete(phrase);
+    } else {
+      newPinnedPhrases.add(phrase);
+    }
+    setPinnedPhrases(newPinnedPhrases);
+  };
+
+  // Sort phrases with pinned ones at the top
+  const sortedPhrases = React.useMemo(() => {
+    return [...phrases].sort((a, b) => {
+      if (pinnedPhrases.has(a) && !pinnedPhrases.has(b)) return -1;
+      if (!pinnedPhrases.has(a) && pinnedPhrases.has(b)) return 1;
+      return 0;
+    });
+  }, [phrases, pinnedPhrases]);
 
   React.useEffect(() => {
     if (route.params?.newPhrase) {
@@ -83,6 +103,16 @@ export default function PhrasesList({ navigation, route }) {
 
   const handleMenuItemPress = (action) => {
     if (action === 'delete' && selectedPhrase) {
+      // Prevent deletion of pinned phrases
+      if (pinnedPhrases.has(selectedPhrase)) {
+        Alert.alert(
+          'Невозможно удалить',
+          'Нельзя удалить закрепленную фразу. Сначала открепите ее.',
+          [{ text: 'OK' }]
+        );
+        return;
+      }
+
       Alert.alert(
         'Удаление фразы',
         'Вы уверены, что хотите удалить эту фразу?',
@@ -119,12 +149,25 @@ export default function PhrasesList({ navigation, route }) {
       </View>
 
       <ScrollView style={styles.scrollView}>
-        {phrases.map((phrase, index) => (
+        {sortedPhrases.map((phrase, index) => (
           <TouchableOpacity
             key={index}
-            style={styles.phraseCard}
+            style={[
+              styles.phraseCard,
+              pinnedPhrases.has(phrase) && styles.pinnedPhraseCard
+            ]}
             onPress={() => navigation.navigate('PhraseView', { phrase })}
           >
+            <TouchableOpacity 
+              style={styles.pinButton}
+              onPress={() => togglePin(phrase)}
+            >
+              <Feather 
+                name={pinnedPhrases.has(phrase) ? "star" : "star"} 
+                size={20} 
+                color={pinnedPhrases.has(phrase) ? "#FFD600" : "#E5E5E5"}
+              />
+            </TouchableOpacity>
             <Text style={styles.phraseText} numberOfLines={2}>
               {phrase}
             </Text>
@@ -187,6 +230,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#f0f0f0',
     alignItems: 'center',
   },
+  pinButton: {
+    padding: 8,
+    marginRight: 8,
+  },
   phraseText: {
     flex: 1,
     fontSize: 16,
@@ -237,5 +284,8 @@ const styles = StyleSheet.create({
   menuItemText: {
     marginLeft: 12,
     fontSize: 16,
+  },
+  pinnedPhraseCard: {
+    backgroundColor: '#FFFBEB',
   },
 }); 

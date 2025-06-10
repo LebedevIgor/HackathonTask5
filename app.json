@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "yandexTask",
-    "slug": "yandexTask",
+    "slug": "asdsas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -32,8 +32,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "d3d4f204-4f1d-4926-8d63-2556b151746c"
+        "projectId": "453c5a2d-58ce-4f38-b15a-9aee2d718faf"
       }
-    }
+    },
+    "owner": "khlulhloo"
   }
 }

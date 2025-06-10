@@ -21,7 +21,6 @@ export default function MessageInput() {
     <View
       style={styles.inputContainer}
       accessible={true}
-      accessibilityRole="form"
       accessibilityLabel="Форма отправки сообщения"
     >
       {/* Левая иконка */}
@@ -57,7 +56,6 @@ export default function MessageInput() {
         value={message}
         onChangeText={setMessage}
         accessible={true}
-        accessibilityRole="textbox"
         accessibilityLabel="Поле ввода сообщения"
         accessibilityHint="Введите текст сообщения здесь"
         returnKeyType="send"
